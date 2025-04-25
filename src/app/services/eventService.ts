@@ -1,6 +1,7 @@
 import {IEvent} from "@/app/types/IEvent";
 import {environment} from "@/lib/environment";
 import {IAddUserForm} from "@/app/types/IAddUserForm";
+import {IEventUser} from "@/app/types/IEventUser";
 
 export const getEvents = async (): Promise<IEvent[]> => {
     const response: Response = await fetch(environment.apiUrl + "/events");
@@ -12,7 +13,7 @@ export const getEvents = async (): Promise<IEvent[]> => {
     return await response.json();
 }
 
-export const addUser = async (eventId: number, data: IAddUserForm): Promise<IEvent> => {
+export const addUser = async (eventId: number, data: IAddUserForm): Promise<IEventUser> => {
     const response: Response = await fetch(environment.apiUrl + `/events/add-user/${eventId}`, {
         method: "POST",
         headers: {
